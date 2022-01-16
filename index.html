@@ -15,7 +15,94 @@
   </head>
   <body>
     <div class="container">
-      <h1>Hello</h1>
+      <div class="container-sm frameone">
+        <form id="search-form" class="form">
+          <input
+            type="text"
+            id="search-input"
+            class="input"
+            placeholder="Search another city..."
+          />
+          <input type="submit" value="Search" />
+        </form>
+        <h1 class="currentPron" id="pronostic">Current pronostic</h1>
+        <div>
+          <span><i class="fas fa-map-marker-alt pin"></i></span
+          ><span class="currentCity">City,Country</span>
+        </div>
+
+        <div class="currentTemp">
+          <span id="temp">00</span>
+
+          <span class="units">
+            <a href="#" id="celsius-link">°C | </a>
+            <a href="#" id="fahrenheit-link">°F</a>
+          </span>
+        </div>
+        <div class="container verflow-hidden">
+          <div class="row align-items-center gx-5 tempDays">
+            <div class="col">
+              <div class="day0">Wed</div>
+              <i class="fas fa-sun emoji"></i>
+              <div class="daytemp">
+                <span id="daytemp">20</span><span id="unit">°C</span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="day1">Thu</div>
+              <i class="fas fa-cloud-sun-rain emoji"></i>
+              <div class="daytemp">
+                <span id="daytemp">19</span><span id="unit">°C</span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="day2">Fri</div>
+              <i class="fas fa-sun emoji"></i>
+              <div class="daytemp">
+                <span id="daytemp">24</span><span id="unit">°C</span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="day3">Sat</div>
+              <i class="fas fa-cloud-sun-rain emoji"></i>
+              <div class="daytemp">
+                <span id="daytemp">10</span><span id="unit">°C</span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="day4">Sun</div>
+              <i class="fas fa-sun emoji"></i>
+              <div class="daytemp">
+                <span id="daytemp">24</span><span id="unit">°C</span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="day5">Mon</div>
+              <i class="fas fa-sun emoji"></i>
+              <div class="daytemp">
+                <span id="daytemp">15</span><span id="unit">°C</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="today" id="today-hour">
+          <span id="date">Month,day</span>
+          <div id="hour">00:00</div>
+        </div>
+        <div class="conteiner changeButtons">
+          <span class="weekbutton">Week | </span>
+          <span class="todaybutton">Today</span>
+        </div>
+      </div>
+      <footer>
+        Coded by Sam Fuentes,
+        <a
+          href="https://github.com/Samfuentes/Vainilla-weather-app"
+          target="_blank"
+          id="open-source-link"
+          >open-source on github.</a
+        >
+      </footer>
     </div>
     <script src="src/script.js"></script>
   </body>
