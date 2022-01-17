@@ -40,9 +40,14 @@ function formateDate() {
   time.innerHTML = `${hour}:${minutes}`;
 }
 
+// Get Forcast
+function getForecast(coordinates) {
+  let apiKey = "940d67fee297ecd4e75bb56949c97896";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 // Display searched or default City
 function displayCity(response) {
-  console.log(response);
   let city = document.querySelector(".currentCity");
   let temperature = document.querySelector("#temp");
   let weather = document.querySelector("#pronostic");
@@ -56,12 +61,11 @@ function displayCity(response) {
   weather.innerHTML = response.data.weather[0].main;
   wind.innerHTML = Math.round(response.data.wind.speed);
   humidity.innerHTML = response.data.main.humidity;
-
   pin.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  console.log(response.data);
+  getForecast(response.data.coord);
 }
 //Search city
 function searchCity(city) {
@@ -74,6 +78,30 @@ function handleSearch(event) {
   event.preventDefault();
   let city = document.querySelector("#search-input");
   searchCity(city.value);
+}
+
+//Display forecast // injecting
+function displayForecast(response) {
+  console.log(response.data);
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+       <div class="weather-forecast-date">${day}</div>
+       <img src="_" class="weather-forecast-icon" />
+       <div class="weather-forecast-temperatures">
+         <span class="weather-forecast-temperatures-max">00°</span>
+         <span class="weather-forecast-temperatures-min">00°</span>
+         <span class="weather-forecast-temperatures-unit">C</span>
+       </div>
+     </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 // Change to Celsius and Farenheit
@@ -107,30 +135,6 @@ function handlePosition(position) {
 
 //navigator.geolocation.getCurrentPosition(handlePosition);
 
-//Display forecast // injecting
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
-       <div class="weather-forecast-date">${day}</div>
-       <img src="_" class="weather-forecast-icon" />
-       <div class="weather-forecast-temperatures">
-         <span class="weather-forecast-temperatures-max">00°</span>
-         <span class="weather-forecast-temperatures-min">00°</span>
-         <span class="weather-forecast-temperatures-unit">C</span>
-       </div>
-     </div>`;
-  });
-
-  forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
-}
-
-displayForecast();
 //Calls
 //Default city
 searchCity("Vancouver");
