@@ -59,6 +59,7 @@ form {
   position: relative;
   top: 30;
 }
+
 #celsius-link:hover,
 #fahrenheit-link:hover {
   font-weight: bold;
