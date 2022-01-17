@@ -39,7 +39,6 @@ function formateDate() {
   date.innerHTML = `${month}, ${day}`;
   time.innerHTML = `${hour}:${minutes}`;
 }
-formateDate();
 
 // Display searched or default City
 function displayCity(response) {
@@ -58,22 +57,18 @@ function displayCity(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 }
-//Search City
+//Search city
 function searchCity(city) {
   let apiKey = "940d67fee297ecd4e75bb56949c97896";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(displayCity);
 }
-//
+// Handle search input
 function handleSearch(event) {
   event.preventDefault();
   let city = document.querySelector("#search-input");
   searchCity(city.value);
 }
-
-searchCity("Vancouver");
-let search = document.querySelector("#search-form");
-search.addEventListener("submit", handleSearch);
 
 // Change to Celsius and Farenheit
 function displayFahrenheit(event) {
@@ -85,7 +80,6 @@ function displayFahrenheit(event) {
   let tempElement = document.querySelector("#temp");
   tempElement.innerHTML = Math.round(fahrenheitTemp);
 }
-
 function displayCelsius(event) {
   event.preventDefault();
   fahrenheit.style.fontWeight = "normal";
@@ -94,13 +88,6 @@ function displayCelsius(event) {
   let tempElement = document.querySelector("#temp");
   tempElement.innerHTML = Math.round(celsiusTemperature);
 }
-
-let celsiusTemperature = null;
-
-let fahrenheit = document.querySelector("#fahrenheit-link");
-let celsius = document.querySelector("#celsius-link");
-fahrenheit.addEventListener("click", displayFahrenheit);
-celsius.addEventListener("click", displayCelsius);
 
 //Change days in table
 function getdays() {
@@ -123,7 +110,6 @@ function getdays() {
 getdays();
 
 //Change to Current location
-
 function handlePosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -134,3 +120,21 @@ function handlePosition(position) {
 }
 
 //navigator.geolocation.getCurrentPosition(handlePosition);
+
+//Calls
+// Current date
+formateDate();
+
+//Default city
+searchCity("Vancouver");
+//Search input city
+let search = document.querySelector("#search-form");
+search.addEventListener("submit", handleSearch);
+
+//Currente temperature
+let celsiusTemperature = null;
+// Change currente temperature
+let fahrenheit = document.querySelector("#fahrenheit-link");
+let celsius = document.querySelector("#celsius-link");
+fahrenheit.addEventListener("click", displayFahrenheit);
+celsius.addEventListener("click", displayCelsius);
