@@ -77,17 +77,12 @@ li {
   list-style: none;
 }
 
-.tempDays {
+.weather-forecast-temperatures,
+.weather-forecast-date {
   font-size: 20px;
-  padding: 30px;
+  padding: 10px;
 }
-.col:hover {
-  background: #c7d4f0;
-  border-radius: 10px;
-}
-.emoji {
-  font-size: 30px;
-}
+
 .changeButtons {
   font-size: 30px;
   text-align: left;

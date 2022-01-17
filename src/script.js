@@ -95,26 +95,6 @@ function displayCelsius(event) {
   tempElement.innerHTML = Math.round(celsiusTemperature);
 }
 
-//Change days in table
-function getdays() {
-  let now = new Date();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let currentday = Number(now.getDay());
-  let count = 0;
-  let nextday = currentday;
-  while (count < 6) {
-    let day = document.querySelector(`.day${count}`);
-    if (nextday === 6) {
-      nextday = 0;
-    } else {
-      nextday += 1;
-    }
-    day.innerHTML = days[nextday];
-    count += 1;
-  }
-}
-getdays();
-
 //Change to Current location
 function handlePosition(position) {
   let lat = position.coords.latitude;
@@ -128,9 +108,6 @@ function handlePosition(position) {
 //navigator.geolocation.getCurrentPosition(handlePosition);
 
 //Calls
-// Current date
-formateDate();
-
 //Default city
 searchCity("Vancouver");
 //Search input city
@@ -144,3 +121,6 @@ let fahrenheit = document.querySelector("#fahrenheit-link");
 let celsius = document.querySelector("#celsius-link");
 fahrenheit.addEventListener("click", displayFahrenheit);
 celsius.addEventListener("click", displayCelsius);
+
+// Current date
+formateDate();
