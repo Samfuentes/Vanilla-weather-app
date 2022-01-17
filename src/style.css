@@ -44,9 +44,12 @@ form {
   font-size: 20px;
   margin: 20px;
 }
-.currentTemp {
+.currentInfo {
   padding: 30px;
-  font-size: 60px;
+}
+.currentTemp {
+  text-align: right;
+  font-size: 65px;
   font-weight: lighter;
 }
 #celsius-link,
@@ -63,6 +66,15 @@ form {
 #celsius-link:hover,
 #fahrenheit-link:hover {
   font-weight: bold;
+}
+
+ul {
+  padding: 30px;
+}
+li {
+  font-size: 15px;
+  text-align: left;
+  list-style: none;
 }
 
 .tempDays {

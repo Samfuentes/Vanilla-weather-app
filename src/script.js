@@ -47,15 +47,21 @@ function displayCity(response) {
   let temperature = document.querySelector("#temp");
   let weather = document.querySelector("#pronostic");
   let pin = document.querySelector("#pin");
+  let humidity = document.querySelector("#humidity");
+  let wind = document.querySelector("#wind");
   celsiusTemperature = response.data.main.temp;
 
   city.innerHTML = `${response.data.name} , ${response.data.sys.country}`;
   temperature.innerHTML = `${Math.round(celsiusTemperature)}`;
   weather.innerHTML = response.data.weather[0].main;
+  wind.innerHTML = Math.round(response.data.wind.speed);
+  humidity.innerHTML = response.data.main.humidity;
+
   pin.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  console.log(response.data);
 }
 //Search city
 function searchCity(city) {

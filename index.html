@@ -43,19 +43,28 @@
           <span><i class="fas fa-map-marker-alt pin"></i></span
           ><span class="currentCity">City,Country</span>
         </div>
-
-        <div class="currentTemp">
-          <span id="temp">00</span
-          ><span class="units">
-            <a href="#" id="celsius-link" class="active">°C</a> |
-            <a href="#" id="fahrenheit-link">°F</a>
-          </span>
+        <div class="row currentInfo">
+          <div class="col currentTemp">
+            <img src="_" class="emoji" id="pin" />
+            <span id="temp">00</span
+            ><span class="units">
+              <a href="#" id="celsius-link" class="active">°C</a> |
+              <a href="#" id="fahrenheit-link">°F</a>
+            </span>
+          </div>
+          <div class="col">
+            <ul>
+              <li>Humidity: <span id="humidity">0</span> %</li>
+              <li>Wind: <span id="wind">0</span>km/h</li>
+            </ul>
+          </div>
         </div>
+
         <div class="container verflow-hidden">
           <div class="row align-items-center gx-5 tempDays">
             <div class="col">
               <div class="day0">day1</div>
-              <img src="_" class="emoji" id="pin" />
+              <i class="fas fa-cloud-sun-rain emoji"></i>
               <div class="daytemp">
                 <span id="daytemp">00</span><span id="unit">°C</span>
               </div>
