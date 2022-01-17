@@ -4,9 +4,9 @@ body {
   font-family: "Ubuntu", sans-serif;
   color: #293236;
 }
-.frameone {
+.wrapper {
   max-width: 1000px;
-  margin: 50px auto;
+  margin: 80px auto;
   padding: 20px;
   text-align: center;
   background: rgba(222, 229, 240, 0.7);
@@ -35,8 +35,10 @@ body {
 .units {
   text-decoration: none;
   color: #293236;
-  font-size: 30px;
+  font-size: 20px;
   padding: 0px;
+  position: relative;
+  top: 30;
 }
 #celsius-link:hover,
 #fahrenheit-link:hover {
@@ -57,9 +59,9 @@ body {
 .changeButtons {
   font-size: 30px;
   text-align: left;
-  margin: 30px;
-  padding-top: 40px;
-  padding: 30px;
+  margin: 10px;
+
+  padding: 10px;
 }
 
 .weekbutton:hover,
