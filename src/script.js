@@ -107,6 +107,30 @@ function handlePosition(position) {
 
 //navigator.geolocation.getCurrentPosition(handlePosition);
 
+//Display forecast // injecting
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+       <div class="weather-forecast-date">${day}</div>
+       <img src="_" class="weather-forecast-icon" />
+       <div class="weather-forecast-temperatures">
+         <span class="weather-forecast-temperatures-max">00°</span>
+         <span class="weather-forecast-temperatures-min">00°</span>
+         <span class="weather-forecast-temperatures-unit">C</span>
+       </div>
+     </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
 //Calls
 //Default city
 searchCity("Vancouver");
