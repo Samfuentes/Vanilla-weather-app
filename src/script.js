@@ -1,19 +1,4 @@
-// Default City
-function displayCity(response) {
-  let city = document.querySelector(".currentCity");
-  city.innerHTML = `${response.data.name} , ${response.data.sys.country}`;
-  let temperature = document.querySelector("#temp");
-  temperature.innerHTML = `${Math.round(response.data.main.temp)}`;
-  let weather = document.querySelector("#pronostic");
-  currentWeather = response.data.weather[0].main;
-  weather.innerHTML =
-    currentWeather.charAt(0).toUpperCase() + currentWeather.slice(1);
-}
-let apiKey = "940d67fee297ecd4e75bb56949c97896";
-apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Vancouver&units=metric`;
-axios.get(`${apiUrl}&appid=${apiKey}`).then(displayCity);
-
-//Currente date
+//Current date
 function formateDate() {
   let date = document.querySelector("#date");
   let time = document.querySelector("#hour");
@@ -55,3 +40,84 @@ function formateDate() {
   time.innerHTML = `${hour}:${minutes}`;
 }
 formateDate();
+
+// Display searched or default City
+function displayCity(response) {
+  console.log(response);
+  let city = document.querySelector(".currentCity");
+  let temperature = document.querySelector("#temp");
+  let weather = document.querySelector("#pronostic");
+  let pin = document.querySelector("#pin");
+
+  city.innerHTML = `${response.data.name} , ${response.data.sys.country}`;
+  temperature.innerHTML = `${Math.round(response.data.main.temp)}`;
+  weather.innerHTML = response.data.weather[0].main;
+  pin.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+}
+//Search City
+function searchCity(city) {
+  let apiKey = "940d67fee297ecd4e75bb56949c97896";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(displayCity);
+}
+//
+function handleSearch(event) {
+  event.preventDefault();
+  let city = document.querySelector("#search-input");
+  searchCity(city.value);
+}
+
+searchCity("Vancouver");
+let search = document.querySelector("#search-form");
+search.addEventListener("submit", handleSearch);
+
+// Change to Celsius and Farenheit
+function changetoCelsius() {
+  let temp = document.querySelector("#temp");
+  temp.innerHTML = `00`;
+}
+function changetoFahren() {
+  let temp = document.querySelector("#temp");
+  temp.innerHTML = `70`;
+}
+let celsius = document.querySelector("#celsius-link");
+let fahrenheit = document.querySelector("#fahrenheit-link");
+
+celsius.addEventListener("click", changetoCelsius);
+fahrenheit.addEventListener("click", changetoFahren);
+
+//Change to Current location
+
+function handlePosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  console.log(lat);
+  let apiKey = "940d67fee297ecd4e75bb56949c97896";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(showCurrentCity);
+}
+
+//navigator.geolocation.getCurrentPosition(handlePosition);
+
+//Change days in table
+function getdays() {
+  let now = new Date();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let currentday = Number(now.getDay());
+  let count = 0;
+  let nextday = currentday;
+  while (count < 6) {
+    let day = document.querySelector(`.day${count}`);
+    if (nextday === 6) {
+      nextday = 0;
+    } else {
+      nextday += 1;
+    }
+    day.innerHTML = days[nextday];
+    count += 1;
+  }
+}
+getdays();
