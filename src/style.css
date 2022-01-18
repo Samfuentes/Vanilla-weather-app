@@ -46,6 +46,7 @@ form {
 }
 .currentInfo {
   padding: 30px;
+  padding-bottom: 10px;
 }
 .currentTemp {
   text-align: right;
@@ -77,12 +78,24 @@ li {
   list-style: none;
 }
 
+.forecast {
+  padding: 20px;
+  border-bottom: 1px solid #1733481a;
+  border-top: 1px solid #1733481a;
+}
 .weather-forecast-temperatures,
 .weather-forecast-date {
   font-size: 20px;
-  padding: 10px;
+  padding: 5px;
 }
 
+.weather-forecast-temperatures-max {
+  font-weight: bold;
+  color: #3c474d;
+}
+.weather-forecast-temperatures-min {
+  font-weight: lighter;
+}
 .changeButtons {
   font-size: 30px;
   text-align: left;
@@ -91,11 +104,17 @@ li {
   padding: 10px;
 }
 
+.weekbutton,
+.todaybutton {
+  text-decoration: none;
+  color: #293236;
+}
 .weekbutton:hover,
 .todaybutton:hover {
   font-weight: bold;
 }
 .today {
+  padding: 20px;
   text-align: center;
   font-size: 30px;
 }

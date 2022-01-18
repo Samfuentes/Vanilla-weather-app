@@ -40,14 +40,14 @@ function formateDate() {
   time.innerHTML = `${hour}:${minutes}`;
 }
 
-//
+// Formate for forecast week-day
 function formateDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
-// Get Forcast
+// Get Forecast
 function getForecast(coordinates) {
   let apiKey = "940d67fee297ecd4e75bb56949c97896";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
@@ -87,11 +87,12 @@ function handleSearch(event) {
   searchCity(city.value);
 }
 
-//Display forecast // injecting
+//Display forecast week
 function displayForecast(response) {
   let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class="row">`;
+  let forecastHTML = `<div class="row forecast"><div class= "col-2"></div>`;
 
   forecast.forEach(function (forecastDay, index) {
     if (index < 7 && index !== 0) {
@@ -105,17 +106,17 @@ function displayForecast(response) {
        <div class="weather-forecast-temperatures">
          <span class="weather-forecast-temperatures-max">${Math.round(
            forecastDay.temp.max
-         )}°</span>
+         )}°  | </span>
          <span class="weather-forecast-temperatures-min">${Math.round(
            forecastDay.temp.min
          )}°</span>
-         <span class="weather-forecast-temperatures-unit">C</span>
+         
        </div>
      </div>`;
     }
   });
 
-  forecastHTML = forecastHTML + `</div>`;
+  forecastHTML = forecastHTML + `<div class= "col-2"></div></div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
@@ -138,6 +139,8 @@ function displayCelsius(event) {
   tempElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+//Change
+
 //Change to Current location
 function handlePosition(position) {
   let lat = position.coords.latitude;
@@ -147,7 +150,6 @@ function handlePosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(showCurrentCity);
 }
-
 //navigator.geolocation.getCurrentPosition(handlePosition);
 
 //Calls
