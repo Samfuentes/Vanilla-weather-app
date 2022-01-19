@@ -31,16 +31,18 @@
       <div class="container-sm">
         <form id="search-form" class="form">
           <input
-            type="text"
-            id="search-input"
+          type="text"
             class="form-control"
-            placeholder="Search another city..."
-            autocomplete="off"
-          />
-        </form>
+                autocomplete="off"
+                id="search-input"
+                placeholder= "🔍 Search another city..."
+              />
+            </form>
+      </div>
+          
         <h1 class="currentPron" id="pronostic">Current pronostic</h1>
         <div>
-          <span><i class="fas fa-map-marker-alt pin"></i></span
+          <a href="#" class="position"><i class="fas fa-map-marker-alt pin" id="position"></i></a
           ><span class="currentCity">City,Country</span>
         </div>
         <div class="row currentInfo">
@@ -55,7 +57,7 @@
           <div class="col">
             <ul>
               <li>Humidity: <span id="humidity">0</span> %</li>
-              <li>Wind: <span id="wind">0</span>km/h</li>
+              <li>Wind: <span id="wind">0</span> km/h</li>
             </ul>
           </div>
         </div>
@@ -64,20 +66,20 @@
           <span id="date">Month,day</span>
           <div id="hour">00:00</div>
         </div>
-        <div class="conteiner changeButtons">
-          <a href="#" class="weekbutton" id="week-button">Week</a> |
-          <a href="#" class="todaybutton" id="today-button">Today</a>
+        <div class="container changeButtons">
+          <a href="#"  class="weekbutton" id="week-button">Week | </a>
+          <a href="#"  class="todaybutton"id="today-button">Today</a>
         </div>
+        <footer>
+          Coded by Sam Fuentes,
+          <a
+            href="https://github.com/Samfuentes/Vainilla-weather-app"
+            target="_blank"
+            id="open-source-link"
+            >open-source on github.</a
+          >
+        </footer>
       </div>
-      <footer>
-        Coded by Sam Fuentes,
-        <a
-          href="https://github.com/Samfuentes/Vainilla-weather-app"
-          target="_blank"
-          id="open-source-link"
-          >open-source on github.</a
-        >
-      </footer>
     </div>
     <script src="src/script.js"></script>
   </body>
